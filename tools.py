@@ -44,6 +44,6 @@ def create_tools():
                     func=RetrievalQA.from_chain_type(llm=llm, retriever=retrievers, chain_type_kwargs=chain_type_kwargs),
                 )
             )
-    tools.append(Tool(args_schema=MathChain,name="Math tool",description="use this tool when you need to calculate math problems like nultiply, adding", func=LLMMathChain(llm=llm)))
+    # tools.append(Tool(args_schema=MathChain,name="Math tool",description="use this tool when you need to calculate math problems like nultiply, adding", func=LLMMathChain(llm=llm)))
     
     return tools
