@@ -18,4 +18,4 @@ TO ASK QUERIES ON THE DOCUMENTS:
 ```python run_query.py```
 
 TO ASK QUERIES WITH A STREAMLIT FRONTEND:
-```python frontend.py```
+```streamlit run frontend.py```
