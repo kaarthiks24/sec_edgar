@@ -25,12 +25,20 @@ def create_DB():
     print(files)
     llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-0613")
     for file in files:
-        print(file)
+        # print(file)
         file_name=file.split('.')[0]
         print(file_name)
         file_path = os.path.join(SOURCE_DIRECTORY, file)
         print("File path: ",file_path)
         loader = TextLoader(file_path)
+        # file=loader.load()
+        # print("____Before metadata addition:____", file)
+        # for doc in file:
+        #     # print("Before:",doc.metadata)
+        #     doc.metadata['Document type:']="10-K filings"
+        #     doc.metadata['Filing section']="Risk factors"
+            # print("After:",doc.metadata)
+        # print("_____After metadata addition___",file)
         pages = loader.load_and_split()
         text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
         docs = text_splitter.split_documents(pages)
@@ -42,7 +50,7 @@ def create_DB():
         # retrievers=db.as_retriever()
         file_name=file.split('.')[0]
         
-    return tools
+    return ""
 
 
 def main():
