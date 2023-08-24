@@ -18,7 +18,6 @@ class DocumentInput(BaseModel):
         question: str = Field()
 
 def create_DB():
-    tools = []
 
     logging.info(f"Loading documents from {SOURCE_DIRECTORY}")
     files=os.listdir(SOURCE_DIRECTORY)
@@ -31,25 +30,12 @@ def create_DB():
         file_path = os.path.join(SOURCE_DIRECTORY, file)
         print("File path: ",file_path)
         loader = TextLoader(file_path)
-        # file=loader.load()
-        # print("____Before metadata addition:____", file)
-        # for doc in file:
-        #     # print("Before:",doc.metadata)
-        #     doc.metadata['Document type:']="10-K filings"
-        #     doc.metadata['Filing section']="Risk factors"
-            # print("After:",doc.metadata)
-        # print("_____After metadata addition___",file)
+        
         pages = loader.load_and_split()
         text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
         docs = text_splitter.split_documents(pages)
         embeddings = OpenAIEmbeddings()
         db = Chroma.from_documents(docs,embeddings,persist_directory=f"{PERSIST_DIRECTORY}/{file}")
-        # db.persist()
-        retrievers= db.as_retriever()
-        # db=Chroma.from_documents(docs, embeddings)
-        # retrievers=db.as_retriever()
-        file_name=file.split('.')[0]
-        
     return ""
 
 
