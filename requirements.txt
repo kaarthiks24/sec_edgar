@@ -1,0 +1,6 @@
+chromadb==0.4.12
+openai==0.28.0
+streamlit-chat==0.1.1
+langchain-visualizer==0.0.31
+sec-api==1.0.17
+langchain==0.0.251

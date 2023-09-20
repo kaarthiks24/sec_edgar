@@ -1,25 +1,10 @@
-# from sec_edgar_downloader import Downloader
 
-# dl = Downloader("/home/ubuntu/kaarthik/localGPT/additional")
-
-# dl.get("10-K", "AXP", after="2020-01-01", before="2023-07-10")
-
-from sec_api import QueryApi, ExtractorApi, XbrlApi
+from sec_api import ExtractorApi, XbrlApi
 
 xbrlApi=XbrlApi("92c9dd860762df20722b795af0e4b9fc341ef27c1d888c609db50a2fbacee81a")
 
 extractorApi= ExtractorApi(api_key="92c9dd860762df20722b795af0e4b9fc341ef27c1d888c609db50a2fbacee81a")
  
-# query = {
-#   "query": { "query_string": {
-#       "query": "ticker:AXP AND filedAt:{2020-01-01 TO 2020-12-31} AND formType:\"10-K\""
-#     } },
-#   "from": "0",
-#   "size": "10",
-#   "sort": [{ "filedAt": { "order": "desc" } }]
-# }
-
-# filings = queryApi.get_filings(query)
 
 
 filing_urls = [
@@ -38,7 +23,7 @@ for i, filing_url in enumerate(filing_urls, 1):
             f.write(item)
         f.write(section_text)
  
-#  _____       
+   
 filing_urls_UNH = [
     "https://www.sec.gov/ix?doc=/Archives/edgar/data/0000731766/000073176621000013/unh-20201231.htm",
     "https://www.sec.gov/ix?doc=/Archives/edgar/data/0000731766/000073176622000008/unh-20211231.htm",
@@ -72,11 +57,3 @@ for i, filing_url in enumerate(filing_urls_MSFT, 1):
         for item in result:
             f.write(item)
         f.write(section_text)
-# __________________
-
-# url= "https://www.sec.gov/ix?doc=/Archives/edgar/data/0000004962/000000496223000006/axp-20221231.htm"
-
-# xbrl_json=xbrlApi.xbrl_to_json(htm_url=url)
-
-
-# .keys(),":",xbrl_json["CoverPage"].values(),sep='\n'

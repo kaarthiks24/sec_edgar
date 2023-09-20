@@ -13,12 +13,13 @@ print(PERSIST_DIRECTORY, SOURCE_DIRECTORY)
 
 import openai
 
-
+'''
+Defining a user defined class for the Document comparison agent
+'''
 class DocumentInput(BaseModel):
         question: str = Field()
 
 def create_DB():
-
     logging.info(f"Loading documents from {SOURCE_DIRECTORY}")
     files=os.listdir(SOURCE_DIRECTORY)
     print(files)
